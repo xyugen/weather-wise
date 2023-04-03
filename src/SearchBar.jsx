@@ -47,7 +47,7 @@ const SearchBar = ({ onSearchResults }) => {
                 title='Search'
                 placeholder='Search...'
                 onChange={handleChange}
-                className='p-3 rounded-md bg-gray-800 text-white w-96'
+                className='p-3 rounded-md text-gray-800 bg-white w-96 border-2 border-gray-800'
             />
 
             {searchResult && searchValue.length > 2 &&
