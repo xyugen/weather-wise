@@ -38,7 +38,11 @@ const Main = () => {
             <EmbedLink city={city} />
         </main> }
 
-        <footer className='absolute bottom-0 flex flex-col justify-center items-center p-5 border-t border-gray-800 w-screen text-gray-500'>
+<<<<<<< HEAD
+        <footer className='sm:fixed bottom-0 flex flex-col justify-center items-center p-5 border-t border-gray-800 w-screen text-gray-500'>
+=======
+        <footer className='bottom-0 flex flex-col justify-center items-center p-5 border-t border-gray-800 w-screen text-gray-500'>
+>>>>>>> ebce134 (style: update tailwind classnames for mobile responsiveness)
             <p className='text-l'>&copy; Yugen 2023</p>
             <p className='text-sm'>All Rights Reserved</p>
         </footer>
