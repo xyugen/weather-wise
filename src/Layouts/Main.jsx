@@ -29,7 +29,7 @@ const Main = () => {
      */
     
     return (
-        <div className='h-screen flex flex-col items-center p-5 bg-gray-950 font-pops text-gray-300'>
+        <div className='h-screen flex flex-col items-center p-5 bg-gray-950 font-pops text-gray-300 selection:bg-gray-300 selection:text-gray-900'>
 
         <SearchBar onSearchResults={handleSearchResults} />
         
