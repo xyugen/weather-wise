@@ -9,39 +9,26 @@ const App = () => {
 
   const [weatherData, setWeatherData] = useState([]);
 
-  const [city, setCity] = useState('Manila');
-
-  const weatherStatus = async () => {
+  const weatherStatus = async (city) => {
     await axios.get(`${URL}current.json?key=${process.env.REACT_APP_API_KEY}&q=${encodeURIComponent(city)}&aqi=no`)
-      .then(response => {
-        setWeatherData(response.data);
-        console.log(response);
-      })
-      .catch(error => {
-        console.error(error);
-      });
+      .then(response => setWeatherData(response.data))
+      .catch(error => console.error(error));
   }
 
   const handleSearchResults = (data) => {
-    setCity(`${data.name} ${data.country}`);
-    weatherStatus();
-    console.log(`CITY: `+city);
-  }
+    const newCity = `${data.name} ${data.country}`;
+    weatherStatus(newCity); // pass updated city as argument
+  };  
 
   const formatTime = (datetime) => {
     const date = new Date(datetime);
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const ampm = hours >= 12 ? 'pm' : 'am';
-    const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
-    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-    return `${formattedHours}:${formattedMinutes} ${ampm}`;
+    return date.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
   }  
 
   return (
     <div className='h-screen flex flex-col items-center p-5 bg-gray-950 font-pops text-gray-300'>
 
-        <SearchBar onSearchResults={(data) => handleSearchResults(data)} />
+        <SearchBar onSearchResults={handleSearchResults} />
         
         {weatherData['location'] &&
         <div className='mx-5 font-extralight flex justify-center flex-col h-full'>
@@ -58,7 +45,7 @@ const App = () => {
             </div>
 
             <div className='flex align-center justify-center'>
-              <img className='' src={weatherData['current']['condition'].icon} alt="Weather" />
+              <img src={weatherData['current']['condition'].icon} alt="Weather" />
             </div>
           </div>
           <div className='grid grid-cols-3 text-sm text-center'>

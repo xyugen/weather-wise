@@ -9,12 +9,8 @@ const SearchBar = ({ onSearchResults }) => {
 
     const searchQuery = async () => {
         await axios.get(`${URL}search.json?key=${process.env.REACT_APP_API_KEY}&q=${encodeURIComponent(searchValue)}`)
-            .then(response => {
-                setSearchResult(response.data);
-            })
-            .catch(error => {
-                console.error(error);
-            });
+            .then(response => setSearchResult(response.data))
+            .catch(error => console.error(error));
     }
 
     const handleChange = (event) => {
