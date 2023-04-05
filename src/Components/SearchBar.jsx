@@ -1,17 +1,9 @@
-import React, { useState } from 'react'
-import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { searchQuery } from '../Services/weatherapi';
 
 const SearchBar = ({ onSearchResults }) => {
-    const URL = "https://api.weatherapi.com/v1/";
-
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
-
-    const searchQuery = async () => {
-        await axios.get(`${URL}search.json?key=${process.env.REACT_APP_API_KEY}&q=${encodeURIComponent(searchValue)}`)
-            .then(response => setSearchResult(response.data))
-            .catch(error => console.error(error));
-    }
 
     const handleChange = (event) => {
         const inputLength = event.target.value.length;
@@ -19,7 +11,9 @@ const SearchBar = ({ onSearchResults }) => {
 
         if (inputLength >= 3) {
             setSearchValue(event.target.value);
-            searchQuery();
+            searchQuery(searchValue)
+                .then(res => setSearchResult(res))
+                .catch(err => console.error(err));
             if (results)
                 results.style.opacity = 1;
         } else if (inputLength < 3 && document.querySelector('#results')) {
@@ -28,6 +22,10 @@ const SearchBar = ({ onSearchResults }) => {
                 results.style.opacity = 0;
         }
     }
+
+    useEffect(() => {
+
+    })
 
     const handleSearchClick = (name, country) => {
         const data = { name, country };
