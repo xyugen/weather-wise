@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import axios from 'axios';
 
 import './tailwind.css'
-import SearchBar from './SearchBar';
+import SearchBar from './Components/SearchBar';
 
-import WeatherCard from './WeatherCard';
+import WeatherCard from './Components/WeatherCard';
 
 const App = () => {
   const URL = "https://api.weatherapi.com/v1/";
@@ -36,14 +36,12 @@ const App = () => {
   return (
     <div className='h-screen flex flex-col items-center p-5 bg-gray-950 font-pops text-gray-300'>
 
-        <SearchBar onSearchResults={handleSearchResults} />
-        
-        {weatherData['location'] &&
-        <main className='mx-5 font-extralight flex justify-center flex-col h-full'>
-          <WeatherCard data={weatherData} />
-        </main>
-        }
-
+      <SearchBar onSearchResults={handleSearchResults} />
+      
+      { weatherData['location'] &&
+      <main className='mx-5 font-extralight flex justify-center flex-col h-full'>
+        <WeatherCard data={weatherData} />
+      </main> }
 
       <footer className='absolute bottom-0 flex flex-col justify-center items-center p-5 border-t border-gray-800 w-screen text-gray-500'>
         <p className='text-l'>&copy; Yugen 2023</p>

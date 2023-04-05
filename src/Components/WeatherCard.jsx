@@ -18,8 +18,6 @@ const formatTime = (datetime) => {
 }
 
 const WeatherCard = ({ data }) => {
-    
-
     return (
         <Tilt
             className='bg-gray-800/75 p-5 rounded-lg shadow-md shadow-black/75 max-w-xl'>
