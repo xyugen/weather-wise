@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import VanillaTilt from 'vanilla-tilt'
 import { weatherStatus } from '../Services/weatherapi';
+import { formatTime, formatDate } from '../Utils';
 
 const Tilt = (props) => {
     const { options, ...rest } = props;
@@ -11,11 +12,6 @@ const Tilt = (props) => {
     }, [options]);
 
     return <div ref={tilt} {...rest} />;
-}
-
-const formatTime = (datetime) => {
-    const date = new Date(datetime);
-    return date.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
 }
 
 const WeatherCard = ({ data = null }) => {
@@ -49,7 +45,7 @@ const WeatherCard = ({ data = null }) => {
                     <>
                     <div className='text-center mb-5'>
                         <h1 className='lg:text-5xl text-4xl mb-4'>{weatherData['location'].name}, {weatherData['location'].country}</h1>
-                        <p>Wed, 5 Sep 2020</p>
+                        <p>{formatDate(weatherData['location'].localtime)}</p>
                     </div>
 
                     <div className='grid grid-cols-2 mb-2'>
