@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import EmbedLink from '../Components/EmbedLink'
 
 import SearchBar from '../Components/SearchBar'
 import WeatherCard from '../Components/WeatherCard'
@@ -7,10 +8,12 @@ import { weatherStatus } from '../Services/weatherapi'
 
 const Main = () => {
     const [weatherData, setWeatherData] = useState([]);
+    const [city, setCity] = useState('');
 
     const handleSearchResults = async (data) => {
         const newCity = `${data.name} ${data.country}`;
-        setWeatherData(await weatherStatus(newCity)); // pass updated city as argument
+        setCity(newCity);
+        setWeatherData(await weatherStatus(encodeURIComponent(newCity))); // pass updated city as argument
     };
 
     /**
@@ -32,6 +35,7 @@ const Main = () => {
         { weatherData['location'] &&
         <main className='mx-5 font-extralight flex justify-center flex-col h-full'>
             <WeatherCard data={weatherData} />
+            <EmbedLink city={city} />
         </main> }
 
         <footer className='absolute bottom-0 flex flex-col justify-center items-center p-5 border-t border-gray-800 w-screen text-gray-500'>

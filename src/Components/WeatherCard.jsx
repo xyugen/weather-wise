@@ -39,35 +39,41 @@ const WeatherCard = ({ data = null }) => {
     }, [city, data]);
 
     return (
-        <Tilt
-            className={`${tiltClassName} p-5 rounded-lg shadow-md shadow-black/75 max-w-xl`}>
-            
+        <>
             {weatherData['location'] &&
             <>
-            <div className='text-center mb-5'>
-                <h1 className='lg:text-5xl text-4xl mb-4'>{weatherData['location'].name}, {weatherData['location'].country}</h1>
-                <p>Wed, 5 Sep 2020</p>
-            </div>
+                <Tilt
+                    className={`${tiltClassName} p-5 rounded-lg shadow-md shadow-black/75 max-w-xl`}>
+                    
+                    {weatherData['location'] &&
+                    <>
+                    <div className='text-center mb-5'>
+                        <h1 className='lg:text-5xl text-4xl mb-4'>{weatherData['location'].name}, {weatherData['location'].country}</h1>
+                        <p>Wed, 5 Sep 2020</p>
+                    </div>
 
-            <div className='grid grid-cols-2 mb-2'>
-                <div className='text-center lg:text-xl text-l'>
-                <p className='lg:text-7xl text-6xl font-bold'>{weatherData['current'].temp_c}°C</p>
-                <p>{weatherData['current']['condition'].text}</p>
-                <p>Update {formatTime(weatherData['current'].last_updated)}</p>
-                </div>
+                    <div className='grid grid-cols-2 mb-2'>
+                        <div className='text-center lg:text-xl text-l'>
+                        <p className='lg:text-7xl text-6xl font-bold'>{weatherData['current'].temp_c}°C</p>
+                        <p>{weatherData['current']['condition'].text}</p>
+                        <p>Update {formatTime(weatherData['current'].last_updated)}</p>
+                        </div>
 
-                <div className='flex align-center justify-center'>
-                <img src={weatherData['current']['condition'].icon} alt="Weather" />
-                </div>
-            </div>
-            <div className='grid grid-cols-3 text-sm text-center'>
-                <p>Barometer {weatherData['current'].pressure_mb} mb</p>
-                <p>Feels like {weatherData['current'].feelslike_c}°C</p>
-                <p>Humidity {weatherData['current'].humidity}%</p>
-            </div>
+                        <div className='flex align-center justify-center'>
+                        <img src={weatherData['current']['condition'].icon} alt="Weather" />
+                        </div>
+                    </div>
+                    <div className='grid grid-cols-3 text-sm text-center'>
+                        <p>Barometer {weatherData['current'].pressure_mb} mb</p>
+                        <p>Feels like {weatherData['current'].feelslike_c}°C</p>
+                        <p>Humidity {weatherData['current'].humidity}%</p>
+                    </div>
+                    </>
+                }
+                </Tilt>
             </>
-        }
-        </Tilt>
+            }
+        </>
   )
 }
 
