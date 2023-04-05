@@ -4,7 +4,11 @@ This is a React weather forecast web application that allows users to search for
 
 ## Getting Started
 
-To run the application locally, clone this repository and run the following commands:
+To run the application locally, follow these steps:
+
+1. Clone this repository and go to [weatherapi.com](https://www.weatherapi.com) to get your API key.
+2. Replace the api key in .env with your api key.
+3. Run the following commands:
 
 ```bash
 npm install
