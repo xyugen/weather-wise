@@ -45,18 +45,18 @@ const SearchBar = ({ onSearchResults }) => {
                 id='search'
                 type="text"
                 title='Search'
-                placeholder='Search...'
+                placeholder='Search'
                 onChange={handleChange}
-                className='p-3 rounded-md text-gray-800 bg-white w-96 border-2 border-gray-800'
+                className='p-3 rounded-md text-gray-100 bg-gray-900 w-[22rem] border-2 border-gray-800'
             />
 
             {searchResult && searchValue.length > 2 &&
                 <div 
                     id='results'
-                    className='absolute z-10 mt-2 w-96 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none fo'>
+                    className='absolute z-10 mt-2 w-[22rem] rounded-md bg-gray-900 text-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
                     {searchResult.map((item) => (
                         <button
-                            className='p-2 w-full rounded-md hover:bg-gray-100'
+                            className='p-3 w-full rounded-md hover:bg-gray-800'
                             onClick={() => handleSearchClick(item.name, item.country)} >
                             {item.name}, {item.country}
                         </button>
