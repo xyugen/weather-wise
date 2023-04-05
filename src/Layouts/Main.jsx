@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import EmbedLink from '../Components/EmbedLink'
+import IntroBanner from '../Components/IntroBanner'
 
 import SearchBar from '../Components/SearchBar'
 import WeatherCard from '../Components/WeatherCard'
@@ -39,10 +40,7 @@ const Main = () => {
                 <EmbedLink city={city} />
             </>
         ) : (
-            <>
-                <h1 className='font-bold text-5xl text-gray-200'>Weather Wise</h1>
-                <p className='mt-5 font-light text-blue-300'>A user-friendly web app that provides accurate and up-to-date weather forecasts for your location. </p>
-            </>
+            <IntroBanner areLinksDisplayed={true} />
         )}
         </main>
 
