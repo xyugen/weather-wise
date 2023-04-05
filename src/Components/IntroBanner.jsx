@@ -9,10 +9,10 @@ const IntroBanner = ({ areLinksDisplayed = false }) => {
             <div className='flex font-light gap-3 mt-2'>
                 <a
                     className='bg-gray-800 p-2 rounded hover:bg-gray-700 transition-all'
-                    href="http://https://www.weatherapi.com/" target="_blank" rel="noopener noreferrer">API</a>
+                    href="https://www.weatherapi.com/" target="_blank" rel="noopener noreferrer">API</a>
                 <a
                     className='bg-gray-800 p-2 rounded hover:bg-gray-700 transition-all'
-                    href="http://https://github.com/xyugen/weather-wise" target="_blank" rel="noopener noreferrer">Github</a>
+                    href="https://github.com/xyugen/weather-wise" target="_blank" rel="noopener noreferrer">Github</a>
             </div> }
     </>
   )
